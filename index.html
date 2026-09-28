@@ -128,9 +128,12 @@
               <article class="detail-module detail-profile-card" id="dieterProfileCard" role="button" tabindex="0" aria-label="Dieter Rams 콘텐츠 상세 열기">
                 <img class="detail-profile-image" src="assets/figma/detail/dieter-profile.png" alt="Dieter Rams" />
                 <button class="detail-save" type="button" aria-label="Dieter Rams 콘텐츠 저장"><img src="assets/figma/bookmark-white.svg" alt="" /></button>
-                <div class="detail-profile-copy">
-                  <h2>Dieter Rams</h2>
-                  <p>덜 만들고, 더 오래 남기는 디자인<br />당신이 저장한 무채색 제품과 모듈 가구에는 같은 기준이 숨어 있어요. 디터 람스의 10가지 원칙을 통해 시간이 흘러도 변하지 않는 미니멀 디자인의 이유를 살펴봅니다.</p>
+                <div class="detail-profile-footer">
+                  <div class="detail-profile-copy">
+                    <h2>Dieter Rams</h2>
+                    <p>덜 만들고, 더 오래 남기는 디자인. 당신이 저장한 무채색 제품과 모듈 가구에는 같은 기준이 숨어 있어요. 디터 람스의 10가지 원칙을 통해 시간이 흘러도 변하지 않는 미니멀 디자인의 이유를 살펴봅니다.</p>
+                  </div>
+                  <button class="detail-arrow detail-profile-arrow" type="button" aria-label="Dieter Rams 콘텐츠 상세 열기">→</button>
                 </div>
               </article>
 
@@ -138,7 +141,6 @@
                 <button class="detail-save" type="button" aria-label="인용 콘텐츠 저장"><img src="assets/figma/bookmark-white.svg" alt="" /></button>
                 <h2>Good design is thorough down to the<br />last detail.</h2>
                 <p><strong>Dieter Rams</strong> <span>10 principles for good design</span></p>
-                <button class="detail-arrow" type="button" aria-label="인용 콘텐츠 열기">→</button>
               </article>
 
               <article class="detail-module detail-image-card detail-braun-card">
@@ -147,10 +149,18 @@
                 <h2>Braun SK4</h2>
               </article>
 
-              <article class="detail-module detail-book-card">
-                <button class="detail-save" type="button" aria-label="책 콘텐츠 저장"><img src="assets/figma/bookmark-white.svg" alt="" /></button>
-                <img src="assets/figma/detail/dieter-book.png" alt="Dieter Rams: The Complete Works" />
-                <div><h2>The complete works</h2><p>Buy now</p></div>
+              <article class="detail-module detail-film-card">
+                <img src="assets/figma/detail/rams-film.png" alt="RAMS 다큐멘터리" />
+                <div><img src="assets/figma/detail/netflix.png" alt="Netflix" /><strong>RAMS (2018)</strong></div>
+              </article>
+
+              <article class="detail-module detail-recommend-card">
+                <svg class="detail-recommend-shape" viewBox="0 0 374 187" fill="none" aria-hidden="true"><path d="M0 24C0 10.7452 10.7452 0 24 0H117.96C123.177 0 128.253 1.70033 132.418 4.84346L172.582 35.1565C176.747 38.2997 181.823 40 187.04 40H350C363.255 40 374 50.7452 374 64V163C374 176.255 363.255 187 350 187H24C10.7452 187 0 176.255 0 163V24Z" fill="#FE4501" /></svg>
+                <span class="recommend-label">recommand</span>
+                <div class="detail-recommend-copy">
+                  <h2>sooya’s collection</h2>
+                  <p>미니멀 UI를 모아둔 컬렉션을 살펴보세요</p>
+                </div>
               </article>
 
               <article class="detail-module detail-event-card">
@@ -169,11 +179,19 @@
                 <p><strong><span>89% matching</span> hhoynn</strong><span>미니멀리즘 가구 컬렉터</span></p>
                 <button class="detail-arrow" type="button" aria-label="매칭 프로필 열기">→</button>
               </article>
+
+              <article class="detail-module detail-book-card">
+                <button class="detail-save" type="button" aria-label="책 콘텐츠 저장"><img src="assets/figma/bookmark-white.svg" alt="" /></button>
+                <img src="assets/figma/detail/dieter-book.png" alt="Dieter Rams: The Complete Works" />
+                <div><h2>The complete works</h2><p>Buy now</p></div>
+              </article>
             </div>
           </div>
         </section>
 
         <section class="article-detail" id="articleDetail" aria-label="미니멀의 거장 디터람스 콘텐츠 상세" aria-hidden="true">
+          <button class="article-back" id="articleBack" type="button" aria-label="관련 콘텐츠 목록으로 돌아가기"><img src="assets/figma/article/back.svg" alt="" /></button>
+          <button class="article-save" type="button" aria-label="콘텐츠 저장"><img src="assets/figma/article/save.svg" alt="" /></button>
           <div class="article-scroll" id="articleScroll">
             <div class="article-canvas">
               <div class="article-hero">
@@ -182,9 +200,6 @@
                 <div class="article-hero-blur" aria-hidden="true"></div>
                 <div class="article-hero-copy"><span>디자이너</span><h2>미니멀의 거장<br />디터람스</h2></div>
               </div>
-              <button class="article-back" id="articleBack" type="button" aria-label="관련 콘텐츠 목록으로 돌아가기"><img src="assets/figma/article/back.svg" alt="" /></button>
-              <button class="article-save" type="button" aria-label="콘텐츠 저장"><img src="assets/figma/article/save.svg" alt="" /></button>
-
               <p class="article-intro">디터 람스는 "더 적게, 하지만 더 좋게(Less, but better)"라는<br />철학으로 현대 산업 디자인의 본질을 정립한 거장입니다. 브라운(Braun)의 수석 디자이너로서 그가 남긴 10대 디자인 원칙은 오늘날 애플을 비롯한 수많은 글로벌 기업의 미니멀리즘 디자인에 깊은 영감을 주었습니다. 불필요한 장식을 배제하고 기능과 형태의 완벽한 조화를 이뤄낸 그의 제품들은 시간이 흘러도 변하지 않는 세련된 가치를 보여줍니다.</p>
               <div class="article-tags" aria-label="관련 태그"><span>Dieter Rams</span><span>Braun</span><span>Modern</span><span>Product</span></div>
               <div class="article-divider" aria-hidden="true"></div>
@@ -221,10 +236,6 @@
                 </div>
               </section>
 
-              <nav class="article-gnb" aria-label="콘텐츠 상세 메뉴">
-                <div class="article-gnb-main"><button class="is-active" type="button" aria-label="Home"><img src="assets/figma/gnb-home.svg" alt="" /></button><button type="button" aria-label="Archive"><img src="assets/figma/gnb-folder.svg" alt="" /></button><button type="button" aria-label="My"><img src="assets/figma/gnb-my.svg" alt="" /></button></div>
-                <button class="article-ai" type="button" aria-label="AI 검색"><img src="assets/figma/home-logo.svg" alt="" /></button>
-              </nav>
               <div class="article-home-indicator" aria-hidden="true"></div>
             </div>
           </div>
@@ -338,7 +349,7 @@
     </section>
 
     <section class="report-screen" id="reportScreen" aria-label="연간 리포트" aria-hidden="true">
-      <header class="report-header"><button class="report-back" type="button" aria-label="메뉴로 돌아가기">‹</button><button class="report-year" type="button">2025<span aria-hidden="true"></span></button></header>
+      <header class="report-header"><button class="report-back" type="button" aria-label="메뉴로 돌아가기"><svg aria-hidden="true" width="9" height="14" viewBox="0 0 9 14" fill="none"><path d="M7.41406 0.707031L1.41406 6.70703L7.41406 12.707" stroke="#242424" stroke-width="2" /></svg></button><button class="report-year" type="button">2025<span aria-hidden="true"></span></button></header>
       <div class="report-scroll">
         <button class="report-month report-month--march" type="button"><img src="assets/figma/report/march.png" alt="March 취향 리포트" /><strong>March</strong></button>
         <button class="report-month report-month--april" type="button"><img src="assets/figma/report/april.png" alt="April 취향 리포트" /><strong>April</strong></button>

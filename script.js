@@ -457,6 +457,10 @@ detailBack?.addEventListener('pointerdown', event => {
 });
 detailBack?.addEventListener('click', closeDieterDetail);
 dieterProfileCard?.addEventListener('click', event => {
+  if (event.target.closest('.detail-profile-arrow')) {
+    openArticleDetail();
+    return;
+  }
   if (event.target.closest('button')) return;
   openArticleDetail();
 });
