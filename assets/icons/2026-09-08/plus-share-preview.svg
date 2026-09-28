@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="230" viewBox="0 0 400 230" fill="none">
+  <rect width="400" height="230" rx="24" fill="#5A43FF"/>
+  <g color="#09090B" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+    <g transform="translate(82 40) scale(4)"><path d="M12 5v14M5 12h14"/></g>
+    <g transform="translate(242 40) scale(4)"><path d="M12 15V4M8 8l4-4 4 4M6 11v8h12v-8"/></g>
+  </g>
+  <g fill="#09090B" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle">
+    <text x="130" y="195">01 PLUS</text>
+    <text x="290" y="195">02 SHARE</text>
+  </g>
+</svg>

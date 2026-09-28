@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="220" viewBox="0 0 900 260" fill="none">
+  <rect width="900" height="260" rx="24" fill="#5A43FF"/>
+  <g color="#09090B" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+    <g transform="translate(68 50) scale(3.2)"><path d="m6 6 12 12M18 6 6 18"/></g>
+    <g transform="translate(238 50) scale(3.2)"><path d="m6.5 15.5 5.5-6 5.5 6"/></g>
+    <g transform="translate(408 50) scale(3.2)"><path d="m6.5 8.5 5.5 6 5.5-6"/></g>
+    <g transform="translate(578 50) scale(3.2)"><path d="m15.5 6.5-6 5.5 6 5.5"/></g>
+    <g transform="translate(748 50) scale(3.2)"><path d="m8.5 6.5 6 5.5-6 5.5"/></g>
+  </g>
+  <g fill="#09090B" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="17" font-weight="600" text-anchor="middle">
+    <text x="106" y="205">CLOSE</text>
+    <text x="276" y="205">UP</text>
+    <text x="446" y="205">DOWN</text>
+    <text x="616" y="205">LEFT</text>
+    <text x="786" y="205">RIGHT</text>
+  </g>
+</svg>

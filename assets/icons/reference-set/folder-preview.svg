@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="260" viewBox="0 0 360 260" fill="none">
+  <rect width="360" height="260" rx="24" fill="#5A43FF"/>
+  <g transform="translate(84 25) scale(8)" color="#09090B" fill="none" stroke="currentColor">
+    <path d="M4 15.5V5h5l2.2 2.5H20" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+    <path d="M20 10v8H4" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/>
+  </g>
+  <text x="180" y="228" fill="#09090B" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="18" font-weight="600" text-anchor="middle">FOLDER</text>
+</svg>

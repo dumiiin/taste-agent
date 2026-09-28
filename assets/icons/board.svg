@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" role="img" aria-labelledby="title">
+  <title id="title">Board</title>
+  <rect x="3.5" y="3.5" width="17" height="17" rx="2" stroke="currentColor" stroke-width="1.8"/>
+  <path d="M12 3.5v17M3.5 12h17" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M7.2 7.7h1.6M15.2 7.7h1.6M7.2 16.3h1.6M15.2 16.3h1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+</svg>

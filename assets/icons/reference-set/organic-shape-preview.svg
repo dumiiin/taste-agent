@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320">
+  <rect width="320" height="320" rx="24" fill="#E9E9FF"/>
+  <g transform="translate(64 64) scale(8)" color="#1D1B20">
+    <path fill="currentColor" d="M12 4.1c2.5 0 4.2-1.7 6.5-.5 2.8 1.4 3 4.3 1.6 6.8-.6 1-.6 2.2 0 3.2 1.4 2.5 1.2 5.4-1.6 6.8-2.3 1.2-4-.5-6.5-.5s-4.2 1.7-6.5.5c-2.8-1.4-3-4.3-1.6-6.8.6-1 .6-2.2 0-3.2C2.5 7.9 2.7 5 5.5 3.6 7.8 2.4 9.5 4.1 12 4.1Z"/>
+  </g>
+</svg>

@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#fff" />
+  <title>Taste Agent</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell" aria-label="Taste Agent">
+    <header class="status-bar" aria-hidden="true">
+      <time>9:41</time>
+      <div class="status-icons"><img src="assets/figma/status-cellular.svg" alt="" /><img src="assets/figma/status-wifi.svg" alt="" /><img src="assets/figma/status-battery.svg" alt="" /></div>
+    </header>
+
+    <section class="onboarding" id="onboarding" aria-label="취향 온보딩">
+      <div class="onboarding-stage onboarding-intro" data-onboarding-stage="intro">
+        <div class="intro-cards" aria-hidden="true">
+          <img src="assets/figma/taste/onboarding-intro-2x.png" alt="" />
+        </div>
+        <div class="intro-copy">
+          <h1>효진님,<br />요즘 어떤 것들에<br />관심이 있으세요?</h1>
+          <p>효진님의 취향을 알려주시면,<br />딱 맞는 정보를 준비해드릴게요.</p>
+        </div>
+        <div class="onboarding-actions">
+          <button class="primary-action" id="startTaste" type="button">내 취향 선택하기</button>
+          <button class="skip-action" data-skip-onboarding type="button">다음에 할게요</button>
+        </div>
+      </div>
+
+      <div class="onboarding-stage taste-stage" data-onboarding-stage="taste" hidden>
+        <div class="taste-viewport" id="tasteViewport" aria-label="취향 카드 탐색 영역">
+          <div class="taste-canvas" id="tasteCanvas">
+            <button class="taste-card" type="button" data-taste="camera" aria-pressed="false"><em>wellness</em><img src="assets/figma/taste/image-12249209.png" alt="카메라" /><span>camera</span><i aria-hidden="true">✓</i></button>
+            <button class="taste-card" type="button" data-taste="baseball" aria-pressed="false"><em>sports</em><img src="assets/figma/taste/image-12249216.png" alt="야구공" /><span>baseball</span><i aria-hidden="true">✓</i></button>
+            <button class="taste-card" type="button" data-taste="movie" aria-pressed="false"><em>food</em><img src="assets/figma/taste/image-12249215.png" alt="팝콘" /><span>movie</span><i aria-hidden="true">✓</i></button>
+            <button class="taste-card" type="button" data-taste="game" aria-pressed="false"><em>hobby</em><img src="assets/figma/taste/image-12249217.png" alt="게임" /><span>game</span><i aria-hidden="true">✓</i></button>
+            <button class="taste-card" type="button" data-taste="poster" aria-pressed="false"><em>art</em><img src="assets/figma/taste/image-12249218.png" alt="포스터" /><span>poster</span><i aria-hidden="true">✓</i></button>
+
+            <button class="taste-card" type="button" data-taste="yoga" aria-pressed="false"><em>wellness</em><img src="assets/figma/taste/image-12249210.png" alt="요가" /><span>yoga</span><i aria-hidden="true">✓</i></button>
+            <button class="taste-card" type="button" data-taste="hotel" aria-pressed="false"><em>place</em><img src="assets/figma/taste/image-12249211.png" alt="호텔" /><span>hotel</span><i aria-hidden="true">✓</i></button>
+            <button class="taste-card" type="button" data-taste="ceramic" aria-pressed="false"><em>art</em><img src="assets/figma/taste/image-12249208.png" alt="도자기" /><span>ceramic</span><i aria-hidden="true">✓</i></button>
+            <button class="taste-card" type="button" data-taste="coffee" aria-pressed="false"><em>food</em><img src="assets/figma/taste/image-12249212.png" alt="커피" /><span>coffee</span><i aria-hidden="true">✓</i></button>
+            <button class="taste-card" type="button" data-taste="croissant" aria-pressed="false"><em>food</em><img src="assets/figma/taste/image-12249220.png" alt="크루아상" /><span>croissant</span><i aria-hidden="true">✓</i></button>
+
+            <button class="taste-card" type="button" data-taste="healthy" aria-pressed="false"><em>wellness</em><img src="assets/figma/taste/image-12249222.png" alt="건강" /><span>healthy</span><i aria-hidden="true">✓</i></button>
+            <button class="taste-card" type="button" data-taste="music" aria-pressed="false"><em>art</em><img src="assets/figma/taste/image-12249213.png" alt="음악" /><span>music</span><i aria-hidden="true">✓</i></button>
+            <button class="taste-card" type="button" data-taste="hotel-2" aria-pressed="false"><em>place</em><img src="assets/figma/taste/image-12249211.png" alt="호텔" /><span>hotel</span><i aria-hidden="true">✓</i></button>
+            <button class="taste-card" type="button" data-taste="furniture-2" aria-pressed="false"><em>furniture</em><img src="assets/figma/taste/image-12249219.png" alt="가구" /><span>furniture</span><i aria-hidden="true">✓</i></button>
+            <button class="taste-card" type="button" data-taste="frame" aria-pressed="false"><em>art</em><img src="assets/figma/taste/image-12249214.png" alt="프레임" /><span>frame</span><i aria-hidden="true">✓</i></button>
+
+            <button class="taste-card" type="button" data-taste="yoga-2" aria-pressed="false"><em>wellness</em><img src="assets/figma/taste/image-12249208.png" alt="요가" /><span>yoga</span><i aria-hidden="true">✓</i></button>
+            <button class="taste-card" type="button" data-taste="wine" aria-pressed="false"><em>food</em><img src="assets/figma/taste/image-12249208.png" alt="와인" /><span>wine</span><i aria-hidden="true">✓</i></button>
+            <button class="taste-card" type="button" data-taste="fashion" aria-pressed="false"><em>art</em><img src="assets/figma/taste/image-12249224.png" alt="패션" /><span>fashion</span><i aria-hidden="true">✓</i></button>
+            <button class="taste-card" type="button" data-taste="nature" aria-pressed="false"><em>place</em><img src="assets/figma/taste/image-12249221.png" alt="자연" /><span>nature</span><i aria-hidden="true">✓</i></button>
+            <button class="taste-card" type="button" data-taste="beauty" aria-pressed="false"><em>hobby</em><img src="assets/figma/taste/image-12249225.png" alt="뷰티" /><span>beauty</span><i aria-hidden="true">✓</i></button>
+          </div>
+        </div>
+        <div class="taste-bottom">
+          <button class="primary-action complete-taste" id="completeTaste" type="button" disabled><span>완료</span></button>
+          <button class="skip-action" data-skip-onboarding type="button">다음에 할게요</button>
+        </div>
+        <div class="onboarding-guide" id="onboardingGuide" role="dialog" aria-modal="true" aria-labelledby="guideTitle">
+          <button class="guide-dim" type="button" tabindex="-1" aria-label="안내 닫기"></button>
+          <div class="guide-card">
+            <button class="guide-close" id="closeGuide" type="button" aria-label="안내 닫기">×</button>
+            <h2 id="guideTitle">find your taste!</h2>
+            <p>Taste Agent가 준비한 취향을 자유롭게<br />탐색하며 당신의 취향을 알려주세요.<br />선택한 취향에 맞추어 아티클을 추천해드려요.</p>
+            <div><b>pinch in&amp;out</b> : 패널 축소&amp;확대<br /><b>scroll</b> : 상하좌우 이동</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="view-stack">
+      <section class="app-view home-view" data-view="home" aria-labelledby="home-title">
+        <div class="home-cover-stack" aria-hidden="true">
+          <img class="home-cover is-active" data-home-cover="0" src="assets/figma/home-seodoho-hq.png" alt="" />
+          <img class="home-cover" data-home-cover="1" src="assets/figma/home-hero-next.png" alt="" />
+          <img class="home-cover" data-home-cover="2" src="assets/figma/home-hero.png" alt="" />
+        </div>
+        <div class="home-image-shade" aria-hidden="true"></div>
+        <div class="home-top-blur" aria-hidden="true"></div>
+        <div class="home-bottom-blur" aria-hidden="true"></div>
+        <header class="home-feature-header">
+          <img class="home-feature-logo" src="assets/figma/home-logo.svg" alt="" />
+          <h1 id="home-title">서도호</h1>
+          <button class="home-feature-menu" type="button" aria-label="메뉴"><img src="assets/figma/home-menu.svg" alt="" /></button>
+        </header>
+        <div class="feature-card-carousel" tabindex="0" aria-label="추천 아티클, 좌우로 밀어 다른 주제를 볼 수 있습니다">
+          <div class="feature-card-track" id="featureCardTrack">
+          <article class="feature-card feature-card-clone" data-home-card="2" aria-hidden="true">
+            <p>미니멀의 거장, 디터람스. 그가 남긴 10대 디자인 원칙을 돌아보고, 시간이 흘러도 변하지 않는 가치를 발견해 보는 시간.</p>
+            <div class="feature-card-footer"><span>furniture</span></div>
+            <button class="feature-bookmark" type="button" tabindex="-1" aria-label="아티클 저장"><img src="assets/figma/home-bookmark.svg" alt="" /></button>
+          </article>
+          <article class="feature-card feature-card-current" data-home-card="0">
+            <p>국립현대미술관 서울관에서 13년 만에 서도호의 전시가 열립니다. 다시 찾아온 그의 예술 세계가 얼마나 더 광활하게 확장되었을지 기대를 모은다.</p>
+            <div class="feature-card-footer"><span>exhibition</span><a class="feature-ticket" data-open-ticket-webview href="https://booking.naver.com/booking/12/bizes/1715706?area=bnr" rel="noopener noreferrer">buy ticket</a></div>
+            <button class="feature-bookmark" type="button" aria-label="아티클 저장"><img src="assets/figma/home-bookmark.svg" alt="" /></button>
+          </article>
+          <article class="feature-card" data-home-card="1">
+            <p>프리츠한센이 이번 가을 전시를 개최한다. 서울에서 2년만에 다시 만나는 프리츠한센, 사람들은 그들의 무엇에 열광하는가.</p>
+            <div class="feature-card-footer"><span>furniture</span><span>exhibition</span></div>
+            <button class="feature-bookmark" type="button" aria-label="아티클 저장"><img src="assets/figma/home-bookmark.svg" alt="" /></button>
+          </article>
+          <article class="feature-card" data-home-card="2">
+            <p>미니멀의 거장, 디터람스. 그가 남긴 10대 디자인 원칙을 돌아보고, 시간이 흘러도 변하지 않는 가치를 발견해 보는 시간.</p>
+            <div class="feature-card-footer"><span>furniture</span></div>
+            <button class="feature-bookmark" type="button" aria-label="아티클 저장"><img src="assets/figma/home-bookmark.svg" alt="" /></button>
+          </article>
+          <article class="feature-card feature-card-clone" data-home-card="0" aria-hidden="true">
+            <p>국립현대미술관 서울관에서 13년 만에 서도호의 전시가 열립니다. 다시 찾아온 그의 예술 세계가 얼마나 더 광활하게 확장되었을지 기대를 모은다.</p>
+            <div class="feature-card-footer"><span>exhibition</span><a class="feature-ticket" data-open-ticket-webview href="https://booking.naver.com/booking/12/bizes/1715706?area=bnr" rel="noopener noreferrer" tabindex="-1">buy ticket</a></div>
+            <button class="feature-bookmark" type="button" tabindex="-1" aria-label="아티클 저장"><img src="assets/figma/home-bookmark.svg" alt="" /></button>
+          </article>
+          </div>
+        </div>
+        <p class="explore-hint">scroll to explore ↑</p>
+        <section class="dieter-detail" id="dieterDetail" aria-label="Dieter Rams 관련 콘텐츠" aria-hidden="true">
+          <div class="detail-scrim" aria-hidden="true"></div>
+          <div class="detail-scroll-chrome" aria-hidden="true"><div class="detail-top-gradient"></div><div class="detail-progressive-blur"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="detail-bottom-chrome" aria-hidden="true"><div class="detail-bottom-gradient"></div><div class="detail-bottom-progressive-blur"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+          <button class="detail-back" id="detailBack" type="button" aria-label="메인 화면으로 돌아가기">back</button>
+          <div class="detail-scroll" id="detailScroll">
+            <div class="detail-module-list">
+              <article class="detail-module detail-profile-card" id="dieterProfileCard" role="button" tabindex="0" aria-label="Dieter Rams 콘텐츠 상세 열기">
+                <img class="detail-profile-image" src="assets/figma/detail/dieter-profile.png" alt="Dieter Rams" />
+                <button class="detail-save" type="button" aria-label="Dieter Rams 콘텐츠 저장"><img src="assets/figma/bookmark-white.svg" alt="" /></button>
+                <div class="detail-profile-copy">
+                  <h2>Dieter Rams</h2>
+                  <p>덜 만들고, 더 오래 남기는 디자인<br />당신이 저장한 무채색 제품과 모듈 가구에는 같은 기준이 숨어 있어요. 디터 람스의 10가지 원칙을 통해 시간이 흘러도 변하지 않는 미니멀 디자인의 이유를 살펴봅니다.</p>
+                </div>
+              </article>
+
+              <article class="detail-module detail-quote-card">
+                <button class="detail-save" type="button" aria-label="인용 콘텐츠 저장"><img src="assets/figma/bookmark-white.svg" alt="" /></button>
+                <h2>Good design is thorough down to the<br />last detail.</h2>
+                <p><strong>Dieter Rams</strong> <span>10 principles for good design</span></p>
+                <button class="detail-arrow" type="button" aria-label="인용 콘텐츠 열기">→</button>
+              </article>
+
+              <article class="detail-module detail-image-card detail-braun-card">
+                <img src="assets/figma/detail/braun-sk4.png" alt="Braun SK4" />
+                <span class="detail-chip">furniture</span>
+                <h2>Braun SK4</h2>
+              </article>
+
+              <article class="detail-module detail-book-card">
+                <button class="detail-save" type="button" aria-label="책 콘텐츠 저장"><img src="assets/figma/bookmark-white.svg" alt="" /></button>
+                <img src="assets/figma/detail/dieter-book.png" alt="Dieter Rams: The Complete Works" />
+                <div><h2>The complete works</h2><p>Buy now</p></div>
+              </article>
+
+              <article class="detail-module detail-event-card">
+                <time><b>16</b><span>WED</span></time>
+                <p><span>19:00</span>《Less and More》 얼리버드 예매 오픈</p>
+              </article>
+
+              <article class="detail-module detail-image-card detail-ive-card">
+                <img src="assets/figma/detail/jonathan-ive.png" alt="Jonathan Ive" />
+                <span class="detail-chip">designer</span>
+                <h2>Jonathan Ive</h2>
+              </article>
+
+              <article class="detail-module detail-match-card">
+                <img src="assets/figma/detail/match-avatar.png" alt="" />
+                <p><strong><span>89% matching</span> hhoynn</strong><span>미니멀리즘 가구 컬렉터</span></p>
+                <button class="detail-arrow" type="button" aria-label="매칭 프로필 열기">→</button>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="article-detail" id="articleDetail" aria-label="미니멀의 거장 디터람스 콘텐츠 상세" aria-hidden="true">
+          <div class="article-scroll" id="articleScroll">
+            <div class="article-canvas">
+              <div class="article-hero">
+                <img src="assets/figma/article/dieter-hero.png" alt="Dieter Rams" />
+                <div class="article-hero-gradient" aria-hidden="true"></div>
+                <div class="article-hero-blur" aria-hidden="true"></div>
+                <div class="article-hero-copy"><span>디자이너</span><h2>미니멀의 거장<br />디터람스</h2></div>
+              </div>
+              <button class="article-back" id="articleBack" type="button" aria-label="관련 콘텐츠 목록으로 돌아가기"><img src="assets/figma/article/back.svg" alt="" /></button>
+              <button class="article-save" type="button" aria-label="콘텐츠 저장"><img src="assets/figma/article/save.svg" alt="" /></button>
+
+              <p class="article-intro">디터 람스는 "더 적게, 하지만 더 좋게(Less, but better)"라는<br />철학으로 현대 산업 디자인의 본질을 정립한 거장입니다. 브라운(Braun)의 수석 디자이너로서 그가 남긴 10대 디자인 원칙은 오늘날 애플을 비롯한 수많은 글로벌 기업의 미니멀리즘 디자인에 깊은 영감을 주었습니다. 불필요한 장식을 배제하고 기능과 형태의 완벽한 조화를 이뤄낸 그의 제품들은 시간이 흘러도 변하지 않는 세련된 가치를 보여줍니다.</p>
+              <div class="article-tags" aria-label="관련 태그"><span>Dieter Rams</span><span>Braun</span><span>Modern</span><span>Product</span></div>
+              <div class="article-divider" aria-hidden="true"></div>
+
+              <section class="article-section article-connect" aria-labelledby="connectTitle">
+                <header><h3 id="connectTitle">Connect</h3><p>디터람스의 대표 디자인</p></header>
+                <div class="article-strip">
+                  <figure><img src="assets/figma/article/connect-sk4.png" alt="Braun SK4" /><figcaption><b>Braun SK4</b><span>1956</span></figcaption></figure>
+                  <figure class="connect-wide"><img src="assets/figma/article/connect-vitsoe.png" alt="Vitsœ 606 Universal Shelving System" /><figcaption><b>Vitsœ 606 Universal Shelving System</b><span>1960</span></figcaption></figure>
+                </div>
+                <button class="article-collection" type="button"><img src="assets/figma/home-logo.svg" alt="" />그의 디자인을 모은 컬렉션을 생성해볼까요?</button>
+              </section>
+
+              <section class="article-section article-interior" aria-labelledby="interiorTitle">
+                <header><h3 id="interiorTitle">Interior</h3><p>디터람스의 디자인이 포함된 인테리어</p></header>
+                <div class="article-strip">
+                  <figure class="interior-one"><img src="assets/figma/article/interior-today.png" alt="" /><figcaption><b>@today_house</b><span>instagram</span></figcaption></figure>
+                  <figure class="interior-two"><img src="assets/figma/article/interior-haus.png" alt="" /><figcaption><b>@haus</b><span>youtube</span></figcaption></figure>
+                  <figure class="interior-three"><img src="assets/figma/article/interior-eyes.png" alt="" /><figcaption><b>@eyesmag</b><span>pinterest</span></figcaption></figure>
+                </div>
+              </section>
+
+              <section class="article-section article-explore" aria-labelledby="exploreTitle">
+                <header><h3 id="exploreTitle">Explore</h3><p>디터람스와 관련된 더 많은 콘텐츠</p></header>
+                <div class="article-grid">
+                  <img src="assets/figma/article/explore-1.png" alt="Dieter Rams 오디오 시스템" />
+                  <img src="assets/figma/article/explore-2.png" alt="작업실의 Dieter Rams" />
+                  <img src="assets/figma/article/explore-3.png" alt="Braun 라디오" />
+                  <img src="assets/figma/article/explore-4.png" alt="작업 중인 Dieter Rams" />
+                  <img src="assets/figma/article/explore-5.png" alt="Braun 오디오" />
+                  <img src="assets/figma/article/explore-6.png" alt="Braun 레코드 플레이어" />
+                  <img src="assets/figma/article/explore-3.png" alt="Braun 라디오" />
+                  <img src="assets/figma/article/explore-4.png" alt="작업 중인 Dieter Rams" />
+                </div>
+              </section>
+
+              <nav class="article-gnb" aria-label="콘텐츠 상세 메뉴">
+                <div class="article-gnb-main"><button class="is-active" type="button" aria-label="Home"><img src="assets/figma/gnb-home.svg" alt="" /></button><button type="button" aria-label="Archive"><img src="assets/figma/gnb-folder.svg" alt="" /></button><button type="button" aria-label="My"><img src="assets/figma/gnb-my.svg" alt="" /></button></div>
+                <button class="article-ai" type="button" aria-label="AI 검색"><img src="assets/figma/home-logo.svg" alt="" /></button>
+              </nav>
+              <div class="article-home-indicator" aria-hidden="true"></div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="app-view archive-view" data-view="archive" aria-labelledby="archive-title" hidden>
+        <div class="archive-v2">
+          <div class="archive-tabs" role="tablist" aria-label="Archive 보기"><button class="is-active" type="button" role="tab" aria-selected="true" data-archive-tab="board">board</button><button type="button" role="tab" aria-selected="false" data-archive-tab="collection">collection</button></div>
+          <div class="archive-v2-content">
+            <section class="archive-panel board-panel is-active" data-archive-panel="board">
+              <div class="board-filters"><button class="board-filter-settings" type="button" aria-label="필터 설정"><img src="assets/figma/archive-filter.svg" alt="" /></button><div><button class="is-selected" type="button">전체</button><button type="button">Brand</button><button type="button">Design</button><button type="button">Trend</button><button type="button">Movie</button><button type="button">Logo</button></div></div>
+              <div class="archive-v2-info"><span>total 1,402</span><button type="button">recent</button></div>
+              <div class="board-grid">
+                <div><figure style="--h:240px"><img src="assets/figma/archive-v2/board-1.png?v=20260928" alt="빈티지 레코드 플레이어" /><span class="source-badge taste-agent-badge" role="img" aria-label="Taste Agent"><img src="assets/figma/home-logo.svg" alt="" /></span></figure><figure style="--h:180px"><img src="assets/figma/archive-v2/board-2.png?v=20260928" alt="도시의 사람과 건강 데이터를 결합한 이미지" /><img class="source-badge" src="assets/figma/archive-v2/pinterest.png?v=20260928" alt="Pinterest" /></figure><figure style="--h:120px"><img src="assets/figma/archive-v2/board-3.png?v=20260928" alt="침실에서 영상을 보는 장면" /><img class="source-badge" src="assets/figma/archive-v2/instagram.png?v=20260928" alt="Instagram" /></figure><figure style="--h:180px"><img src="assets/figma/archive-v2/board-4.png?v=20260928" alt="금속 공예 케이크 오브제" /></figure><figure style="--h:240px"><img src="assets/figma/archive-v2/collection-1.png?v=20260928" alt="백자와 고가구가 놓인 전시 공간" /><img class="source-badge" src="assets/figma/archive-v2/behance.png?v=20260928" alt="Behance" /></figure><figure style="--h:180px"><img src="assets/figma/archive-v2/collection-3.png?v=20260928" alt="블랙 니트 스타일링" /><img class="source-badge" src="assets/figma/archive-v2/instagram.png?v=20260928" alt="Instagram" /></figure><figure style="--h:120px"><img src="assets/figma/archive-v2/collection-5.png?v=20260928" alt="빛을 통과시키는 화이트 패브릭" /><span class="source-badge taste-agent-badge" role="img" aria-label="Taste Agent"><img src="assets/figma/home-logo.svg" alt="" /></span></figure></div>
+                <div><figure style="--h:180px"><img src="assets/figma/archive-v2/board-5.png?v=20260928" alt="노트북과 아침 식사가 놓인 책상" /><img class="source-badge" src="assets/figma/archive-v2/behance.png?v=20260928" alt="Behance" /></figure><figure style="--h:120px"><img src="assets/figma/archive-v2/board-6.png?v=20260928" alt="원색 가구가 배치된 거실" /><img class="source-badge" src="assets/figma/archive-v2/instagram.png?v=20260928" alt="Instagram" /></figure><figure style="--h:180px"><img src="assets/figma/archive-v2/board-7.png?v=20260928" alt="영화 Aloners 포스터" /><img class="source-badge" src="assets/figma/archive-v2/behance.png?v=20260928" alt="Behance" /></figure><figure style="--h:180px"><img src="assets/figma/archive-v2/board-8.png?v=20260928" alt="분홍색 사진집" /><span class="source-badge taste-agent-badge" role="img" aria-label="Taste Agent"><img src="assets/figma/home-logo.svg" alt="" /></span></figure><figure style="--h:180px"><img src="assets/figma/archive-v2/collection-2.png?v=20260928" alt="다이어리와 펜을 든 손" /><img class="source-badge" src="assets/figma/archive-v2/pinterest.png?v=20260928" alt="Pinterest" /></figure><figure style="--h:240px"><img src="assets/figma/archive-v2/collection-4.png?v=20260928" alt="어두운 공간의 공예 잔" /><span class="source-badge taste-agent-badge" role="img" aria-label="Taste Agent"><img src="assets/figma/home-logo.svg" alt="" /></span></figure><figure style="--h:180px"><img src="assets/figma/archive-v2/collection-6.png?v=20260928" alt="잎사귀의 자연 패턴" /><img class="source-badge" src="assets/figma/archive-v2/pinterest.png?v=20260928" alt="Pinterest" /></figure></div>
+              </div>
+            </section>
+            <section class="archive-panel collection-panel" data-archive-panel="collection" hidden>
+              <div class="archive-v2-info collection-info-v2"><span>total 23</span><div><button type="button">recent</button><button class="collection-view-toggle" type="button" data-collection-view-toggle aria-label="카드 보기로 전환"><img src="assets/figma/archive-view-grid.svg" alt="" /></button></div></div>
+              <div class="collection-list-v2" data-collection-layout="list">
+                <article><img src="assets/figma/archive-v2/collection-2.png" alt="노트와 다이어리" /><div><h3>2027 Road map</h3><p>1,593 posts · 2026. 09. 13</p></div></article><article><img src="assets/figma/archive-v2/collection-1.png" alt="전시 공간과 고가구" /><div><h3>exhibition ref.</h3><p>1,593 posts · 2026. 09. 13</p></div></article><article><img src="assets/figma/archive-v2/collection-3.png" alt="블랙 스타일링" /><div><h3>autumn moodboard</h3><p>1,593 posts · 2026. 09. 13</p></div></article><article><img src="assets/figma/archive-v2/collection-4.png" alt="손으로 든 공예 잔" /><div><h3>craft</h3><p>1,593 posts · 2026. 09. 13</p></div></article><article><img src="assets/figma/archive-v2/collection-5.png" alt="화이트 패브릭 쇼룸" /><div><h3>showroom ref.</h3><p>1,593 posts · 2026. 09. 13</p></div></article><article><img src="assets/figma/archive-v2/collection-6.png" alt="잎사귀 패턴" /><div><h3>pattern in nature</h3><p>1,593 posts · 2026. 09. 13</p></div></article><article><img src="assets/figma/archive-v2/collection-7.png" alt="붉은 공간에 앉은 인물" /><div><h3>ZEN</h3><p>1,593 posts · 2026. 09. 13</p></div></article><article><img src="assets/figma/archive-v2/collection-8.png" alt="베이지 패브릭 스타일링" /><div><h3>26FW</h3><p>1,593 posts · 2026. 09. 13</p></div></article>
+              </div>
+              <div class="collection-grid-v2" data-collection-layout="grid" hidden>
+                <article><img src="assets/figma/archive-v2/collection-2.png" alt="노트와 다이어리" /><h3>2027 Road map</h3><p>1,593 posts · 2026. 09. 13</p></article><article><img src="assets/figma/archive-v2/collection-1.png" alt="전시 공간과 고가구" /><h3>exhibition ref.</h3><p>1,593 posts · 2026. 09. 13</p></article><article><img src="assets/figma/archive-v2/collection-3.png" alt="블랙 스타일링" /><h3>autumn moodboard</h3><p>1,593 posts · 2026. 09. 13</p></article><article><img src="assets/figma/archive-v2/collection-4.png" alt="손으로 든 공예 잔" /><h3>craft</h3><p>1,593 posts · 2026. 09. 13</p></article><article><img src="assets/figma/archive-v2/collection-5.png" alt="화이트 패브릭 쇼룸" /><h3>showroom ref.</h3><p>1,593 posts · 2026. 09. 13</p></article><article><img src="assets/figma/archive-v2/collection-6.png" alt="잎사귀 패턴" /><h3>pattern in nature</h3><p>1,593 posts · 2026. 09. 13</p></article><article><img src="assets/figma/archive-v2/collection-7.png" alt="붉은 공간에 앉은 인물" /><h3>ZEN</h3><p>1,593 posts · 2026. 09. 13</p></article><article><img src="assets/figma/archive-v2/collection-8.png" alt="베이지 패브릭 스타일링" /><h3>26FW</h3><p>1,593 posts · 2026. 09. 13</p></article>
+              </div>
+            </section>
+          </div>
+        </div>
+        <h1 id="archive-title">Archive</h1>
+        <section class="collection-section" aria-label="컬렉션">
+          <div class="collection-info"><span>컬렉션</span><button type="button">모두 보기<img src="assets/figma/chevron-right.svg" alt="" /></button></div>
+          <div class="collection-track">
+            <article class="collection-card primary"><img src="assets/figma/collection-1.png" alt="material 컬렉션" /><div><strong>material</strong><small>1,403 posts</small></div></article>
+            <article class="collection-card"><img src="assets/figma/collection-2.png" alt="연출컷 reference 컬렉션" /><div><strong>연출컷 ref</strong><small>738 posts</small></div></article>
+            <article class="collection-card"><img src="assets/figma/collection-3.png" alt="전시 컬렉션" /><div><strong>전시</strong><small>738 posts</small></div></article>
+          </div>
+        </section>
+        <div class="archive-controls">
+          <div class="source-row"><b>출처<img src="assets/figma/chevron-source.svg" alt="" /></b><div><span>Taste Agent</span><span>Pinterest</span><span>Behance</span><span>Instagram</span><span>Dribble</span><span>Medium</span></div></div>
+          <div class="filters" aria-label="콘텐츠 필터"><button class="filter-settings" type="button" aria-label="필터 설정"><img src="assets/figma/archive-filter.svg" alt="" /></button><button class="selected" type="button">전체</button><button type="button">Brand</button><button type="button">Design</button><button type="button">Trend</button><button type="button">Movie</button><button type="button">Logo</button></div>
+          <div class="archive-meta"><span>전체 51,253개</span><button type="button">최신순<img src="assets/figma/chevron-down.svg" alt="" /></button></div>
+        </div>
+        <div class="masonry" aria-label="아카이브 콘텐츠">
+          <div class="masonry-column">
+            <figure style="--h:240px"><img src="assets/figma/archive-1.png" alt="빈티지 오디오 제품" /><img class="platform" src="assets/figma/platform-pinterest.png" alt="Pinterest" /></figure>
+            <figure style="--h:180px"><img src="assets/figma/archive-2.png" alt="그래픽 이미지" /><img class="platform" src="assets/figma/platform-pinterest.png" alt="Pinterest" /></figure>
+            <figure style="--h:120px"><img src="assets/figma/archive-3.png" alt="오브제 이미지" /><img class="platform" src="assets/figma/platform-pinterest.png" alt="Pinterest" /></figure>
+            <figure style="--h:180px"><img src="assets/figma/archive-4.png" alt="공간 이미지" /></figure>
+          </div>
+          <div class="masonry-column">
+            <figure style="--h:180px"><img src="assets/figma/archive-5.png" alt="데스크 컬렉션" /><img class="platform" src="assets/figma/platform-behance.png" alt="Behance" /></figure>
+            <figure style="--h:120px"><img src="assets/figma/archive-6.png" alt="인테리어" /><img class="platform" src="assets/figma/platform-instagram.png" alt="Instagram" /></figure>
+            <figure style="--h:180px"><img src="assets/figma/archive-7.png" alt="공간 컬렉션" /><img class="platform" src="assets/figma/platform-pinterest.png" alt="Pinterest" /></figure>
+            <figure style="--h:180px"><img src="assets/figma/archive-8.png" alt="제품 디자인" /></figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="app-view my-view" data-view="my" aria-labelledby="my-title" hidden><h1 id="my-title">Hyo Jin</h1></section>
+
+      <section class="app-view chat-view" data-view="chat" aria-labelledby="chat-title" hidden>
+        <div class="chat-header"><button class="close-chat" type="button" aria-label="채팅 닫기"><img src="assets/figma/chat-close.svg" alt="" /></button><h2 class="chat-thread-title">거실에 둘 조명 찾기</h2><div><button type="button" aria-label="검색"><img src="assets/figma/chat-search.svg" alt="" /></button><button type="button" aria-label="대화 목록"><img src="assets/figma/chat-menu.svg" alt="" /></button></div></div>
+        <div class="chat-hero"><h1 id="chat-title">find your taste</h1></div>
+        <div class="chat-welcome" aria-label="추천 질문">
+          <div class="chat-suggestions">
+            <button type="button"><img src="assets/figma/chat-topic-1.png" alt="" /><span>영화 오디세이 꼭 IMAX로 봐야할까?</span></button>
+            <button type="button"><img src="assets/figma/chat-topic-2.png" alt="" /><span>GPT-6 Astra 무엇이 달라졌을까</span></button>
+            <button type="button"><img src="assets/figma/chat-topic-3.png" alt="" /><span>다음 주 서도호 전시 방문 전 알아두면 좋은 이야기</span></button>
+          </div>
+        </div>
+        <div class="chat-conversation" aria-label="거실 조명 추천 대화">
+          <div class="chat-user-message">패브릭 소재의 조명을 찾고있어</div>
+          <div class="chat-agent-copy">
+            <p>효진님, 최근 저장하신 항목을 바탕으로 보면 우드 소재와<br />따뜻한 색의 조명을 선호하시는 편이에요.</p>
+            <div class="chat-related-links">
+              <button type="button"><img src="assets/figma/chat-topic-1.png" alt="" /><span>관련 컬렉션 <strong>2개</strong></span></button>
+              <button type="button"><img src="assets/figma/chat-topic-2.png" alt="" /><span>관련 이미지 <strong>84개</strong></span></button>
+            </div>
+            <p>지금 분석한 내용을 기반으로 조명을 추천해드릴까요?</p>
+          </div>
+          <div class="chat-confirm">좋아</div>
+          <div class="chat-agent-copy chat-agent-result">
+            <p>좋아요, 취향을 정확히 이해했어요.<br />지금 취향을 기준으로 조명 4개를 추렸어요.</p>
+            <div class="chat-product-row">
+              <article><img src="assets/figma/chat-product-1.png?v=20260928" alt="오크 리넨 플로어 램프" /><h3>오크 리넨 플로어 램프</h3><p>₩189,000</p></article>
+              <article><img src="assets/figma/chat-product-2.png?v=20260928" alt="스모크 글래스 무드 스탠드" /><h3>스모크 글래스 무드 스탠드</h3><p>₩159,000</p></article>
+              <article><img src="assets/figma/chat-product-3.png?v=20260928" alt="월넛 아치 업라이트" /><h3>월넛 아치 업라이트</h3><p>₩229,000</p></article>
+            </div>
+            <p>원하는 조명이 있으신가요?<br />필요하시다면 비교해서 분석해드리겠습니다.</p>
+          </div>
+        </div>
+        <section class="general-search-screen" aria-label="일반 검색" aria-hidden="true">
+          <header><button type="button" class="general-search-close" aria-label="검색 닫기"><img src="assets/figma/chat-close.svg" alt="" /></button><label><input placeholder="검색어를 입력해주세요" /><img src="assets/figma/chat-search.svg" alt="" /></label></header>
+          <div class="general-search-chips"><button>furniture ×</button><button>exhibition ×</button><button>monotone ×</button><button>netflix ×</button><button>poster ×</button><button>popart ×</button></div>
+          <h2><strong>효진님의 취향에 맞춘</strong> <span>topic today</span></h2>
+          <div class="general-search-topics"><article><img src="assets/figma/search-topic-1.png?v=20260928" alt="lamp" /><strong>lamp</strong><span>시선보다 낮은 곳에 머무는 빛<br />조명 컬렉션과 연결</span></article><article><img src="assets/figma/search-topic-2.png?v=20260928" alt="chrome and wood" /><strong>chrome&amp;wood</strong><span>차가운 금속과 따뜻한 나무<br />검색어 인테리어와 연결</span></article><article><img src="assets/figma/search-topic-3.png?v=20260928" alt="ballet" /><strong>ballet</strong><span>러블리한 무드의 움직임<br />이번 주의 새로운 발견</span></article></div>
+        </section>
+        <form class="chat-input" id="chatForm"><button class="attach" type="button" aria-label="첨부"><img src="assets/figma/chat-plus.svg" alt="" /></button><label class="sr-only" for="message">메시지</label><input id="message" placeholder="Taste Agent와 대화를 시작하세요" autocomplete="off" /><button class="send" type="submit" aria-label="전송"><img src="assets/figma/chat-send.svg" alt="" /></button></form>
+      </section>
+    </div>
+
+    <section class="side-menu" id="sideMenu" aria-label="메뉴" aria-hidden="true">
+      <button class="menu-backdrop" type="button" aria-label="메뉴 닫기"></button>
+      <div class="menu-panel">
+        <div class="menu-brand"><img src="assets/figma/home-logo.svg" alt="" /><strong>Taste Agent</strong></div>
+        <nav class="menu-links" aria-label="내 메뉴"><button type="button" data-open-report>report</button><button type="button" data-menu-placeholder="timeline">timeline</button><button type="button" data-menu-placeholder="setting">setting</button></nav>
+        <div class="menu-footer"><p>이용약관 | 개인정보처리방침</p><p>문의: support@tasteagent.com</p><p>ⓒ Taste Agent. All rights reserved.</p></div>
+      </div>
+      <button class="menu-close" type="button" aria-label="메뉴 닫기">×</button>
+    </section>
+
+    <section class="report-screen" id="reportScreen" aria-label="연간 리포트" aria-hidden="true">
+      <header class="report-header"><button class="report-back" type="button" aria-label="메뉴로 돌아가기">‹</button><button class="report-year" type="button">2025<span aria-hidden="true"></span></button></header>
+      <div class="report-scroll">
+        <button class="report-month report-month--march" type="button"><img src="assets/figma/report/march.png" alt="March 취향 리포트" /><strong>March</strong></button>
+        <button class="report-month report-month--april" type="button"><img src="assets/figma/report/april.png" alt="April 취향 리포트" /><strong>April</strong></button>
+        <button class="report-month report-month--may" type="button"><img src="assets/figma/report/may.png" alt="May 취향 리포트" /><strong>May</strong></button>
+      </div>
+    </section>
+
+    <section class="ticket-webview" id="ticketWebview" aria-label="네이버 예약 앱 웹뷰" aria-hidden="true">
+      <header class="ticket-webview-header">
+        <button class="ticket-webview-close" type="button" aria-label="예약 화면 닫기">×</button>
+        <div><strong>네이버 예약</strong><span>booking.naver.com</span></div>
+        <a class="ticket-webview-open" href="https://booking.naver.com/booking/12/bizes/1715706?area=bnr" target="_blank" rel="noopener noreferrer" aria-label="외부 브라우저에서 열기">↗</a>
+      </header>
+      <div class="ticket-webview-loading" aria-live="polite"><i aria-hidden="true"></i><span>예약 페이지를 불러오는 중</span></div>
+      <iframe class="ticket-webview-frame" title="서도호 전시 네이버 예약" data-src="https://booking.naver.com/booking/12/bizes/1715706?area=bnr" allow="payment" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </section>
+
+    <dialog class="filter-sheet" id="filterSheet" aria-labelledby="filterSheetTitle">
+      <form method="dialog">
+        <div class="sheet-handle" aria-hidden="true"></div>
+        <div class="sheet-heading"><h2 id="filterSheetTitle">아카이브 필터</h2><button value="cancel" aria-label="닫기" type="submit">×</button></div>
+        <fieldset><legend>출처</legend><label><input type="checkbox" value="Pinterest" checked />Pinterest</label><label><input type="checkbox" value="Instagram" checked />Instagram</label><label><input type="checkbox" value="Behance" checked />Behance</label></fieldset>
+        <div class="sheet-actions"><button class="sheet-reset" id="resetFilters" type="button">초기화</button><button class="sheet-apply" id="applyFilters" value="default" type="submit">필터 적용</button></div>
+      </form>
+    </dialog>
+
+    <nav class="gnb" aria-label="주 메뉴">
+      <div class="gnb-main">
+        <button class="nav-button" type="button" data-target="home" aria-label="Home"><img src="assets/figma/gnb-home.svg" alt="" /></button>
+        <button class="nav-button" type="button" data-target="archive" aria-label="Archive"><img src="assets/figma/gnb-folder.svg" alt="" /></button>
+        <button class="nav-button" type="button" data-target="chat" aria-label="Search"><img src="assets/figma/gnb-search-new.svg" alt="" /></button>
+      </div>
+    </nav>
+    <div class="home-indicator" aria-hidden="true"></div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="260" viewBox="0 0 320 260" fill="none">
+  <rect width="320" height="260" rx="24" fill="#5A43FF"/>
+  <g transform="translate(64 24) scale(8)" color="#09090B" fill="none" stroke="currentColor">
+    <circle cx="12" cy="12" r="5" stroke-width="2"/>
+    <path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8" stroke-width="2" stroke-linecap="square"/>
+  </g>
+  <text x="160" y="228" fill="#09090B" font-family="-apple-system, BlinkMacSystemFont, Arial, sans-serif" font-size="18" font-weight="600" text-anchor="middle">22 SETTINGS</text>
+</svg>
