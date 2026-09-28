@@ -42,8 +42,10 @@ function writeState(patch) {
   try { localStorage.setItem(stateKey, JSON.stringify({ ...readState(), ...patch })); } catch { /* file previews can restrict storage */ }
 }
 const restoredState = readState();
-let onboardingActive = Boolean(onboarding) && !restoredState.onboardingComplete;
-if (onboarding && !onboardingActive) onboarding.hidden = true;
+// The prototype always restarts from onboarding after a full page refresh.
+// Completion is still stored for reference, but it must not skip the demo flow.
+let onboardingActive = Boolean(onboarding);
+if (onboarding) onboarding.hidden = false;
 
 function showToast(message) {
   toast.textContent = message;
@@ -540,8 +542,8 @@ function clampTastePosition() {
   if (!tasteViewport) return;
   const viewportWidth = tasteViewport.clientWidth;
   const viewportHeight = tasteViewport.clientHeight;
-  const canvasWidth = 1200 * tasteTransform.scale;
-  const canvasHeight = 960 * tasteTransform.scale;
+  const canvasWidth = tasteCanvas.offsetWidth * tasteTransform.scale;
+  const canvasHeight = tasteCanvas.offsetHeight * tasteTransform.scale;
   const margin = 22;
   tasteTransform.x = clamp(tasteTransform.x, Math.min(margin, viewportWidth - canvasWidth - margin), margin);
   tasteTransform.y = clamp(tasteTransform.y, Math.min(margin, viewportHeight - canvasHeight - margin), margin + 44);
@@ -634,7 +636,10 @@ tasteViewport?.addEventListener('dblclick', event => {
 });
 window.addEventListener('resize', renderTasteCanvas);
 
-window.addEventListener('hashchange', () => openView(location.hash.slice(1) || restoredState.lastView || 'home', { updateHash: false }));
+window.addEventListener('hashchange', () => openView(location.hash.slice(1) || 'home', { updateHash: false }));
 document.body.classList.toggle('onboarding-active', onboardingActive);
-if (!onboardingActive && statusTime) statusTime.textContent = '10:20';
-openView(location.hash.slice(1) || restoredState.lastView || 'home', { updateHash: false });
+if (onboardingActive) {
+  showOnboardingStage('intro');
+  history.replaceState(null, '', '#home');
+}
+openView('home', { updateHash: false });

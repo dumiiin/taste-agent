@@ -87,9 +87,9 @@ body.onboarding-active .status-icons img{filter:invert(1)}
 .taste-stage:after{bottom:0;height:215px;background:linear-gradient(0deg,#191919 0%,#191919dc 42%,#19191900 100%);-webkit-mask-image:linear-gradient(0deg,#000 0%,#000 46%,transparent 100%)}
 .taste-viewport{position:absolute;inset:0 0 116px;overflow:hidden;cursor:grab;touch-action:none;background:#191919}
 .taste-viewport.is-dragging{cursor:grabbing}
-.taste-canvas{position:absolute;left:0;top:54px;width:1200px;height:960px;display:grid;grid-template-columns:repeat(5,240px);grid-template-rows:repeat(4,240px);transform-origin:0 0;will-change:transform;background:#191919}
+.taste-canvas{position:absolute;left:0;top:54px;width:1200px;height:1100px;display:grid;grid-template-columns:repeat(5,240px);grid-template-rows:repeat(4,240px);align-content:start;transform-origin:0 0;will-change:transform;background:#191919}
 .taste-card{position:relative;width:240px;height:240px;margin:0;padding:0;overflow:hidden;border:1px solid #ffffff40;border-radius:0;color:#fff;background:#191919;box-shadow:none;cursor:pointer;transform:translateZ(0);transition:border-color .15s ease,box-shadow .15s ease}
-.taste-card img{position:absolute;left:30px;right:30px;top:32px;width:180px;height:165px;display:block;object-fit:contain;filter:saturate(.86) contrast(1.05);pointer-events:none}
+.taste-card img{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:contain;filter:none;pointer-events:none}
 .taste-card em{position:absolute;z-index:2;left:12px;top:11px;color:#fff;font-size:13px;font-style:normal;font-weight:500;line-height:1;letter-spacing:-.2px;opacity:.75;pointer-events:none}
 .taste-card span{position:absolute;z-index:2;left:12px;bottom:13px;font-size:28px;font-weight:500;line-height:1;letter-spacing:-1px;pointer-events:none}
 .taste-card i{position:absolute;z-index:3;right:8px;top:8px;width:30px;height:30px;border-radius:4px;display:grid;place-items:center;color:#141414;background:#ceff5b;font-size:18px;font-style:normal;font-weight:900;opacity:0;transform:scale(.65);transition:.15s ease;pointer-events:none}
