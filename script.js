@@ -171,7 +171,16 @@ document.querySelectorAll('.archive-v2-info>button:not(.collection-view-toggle),
 });
 
 const filterSheet = document.querySelector('#filterSheet');
-document.querySelector('.board-filter-settings')?.addEventListener('click', () => filterSheet?.showModal());
+const archiveExplainer = document.querySelector('#archiveExplainer');
+document.querySelector('.board-filter-settings')?.addEventListener('click', () => {
+  if (!archiveExplainer) return;
+  archiveExplainer.hidden = false;
+  requestAnimationFrame(() => archiveExplainer.classList.add('is-open'));
+});
+archiveExplainer?.addEventListener('click', () => {
+  archiveExplainer.classList.remove('is-open');
+  window.setTimeout(() => { archiveExplainer.hidden = true; }, 180);
+});
 document.querySelector('.filter-settings')?.addEventListener('click', () => filterSheet?.showModal());
 document.querySelector('#resetFilters')?.addEventListener('click', () => {
   filterSheet.querySelectorAll('input').forEach(input => { input.checked = true; });
@@ -186,6 +195,15 @@ document.querySelector('#applyFilters')?.addEventListener('click', () => {
 });
 
 document.querySelector('.chat-input .attach')?.addEventListener('click', () => showToast('이미지나 링크를 추가할 수 있어요'));
+document.querySelector('.chat-header .new-chat')?.addEventListener('click', () => {
+  chatView?.classList.remove('is-conversation', 'is-searching');
+  if (messageInput) {
+    messageInput.value = '';
+    messageInput.placeholder = 'Taste Agent와 대화를 시작하세요';
+    messageInput.blur();
+  }
+  if (chatConversation) chatConversation.scrollTop = 0;
+});
 document.querySelector('.chat-header button[aria-label="검색"]')?.addEventListener('click', () => {
   chatView?.classList.add('is-searching');
   generalSearchScreen?.setAttribute('aria-hidden', 'false');
@@ -252,7 +270,10 @@ document.querySelector('[data-open-report]')?.addEventListener('click', openRepo
 document.querySelector('.report-back')?.addEventListener('click', () => closeReport());
 document.querySelector('.report-year')?.addEventListener('click', () => showToast('2025년 리포트를 보고 있어요'));
 document.querySelectorAll('[data-menu-placeholder]').forEach(button => button.addEventListener('click', () => showToast(`${button.dataset.menuPlaceholder}은 준비 중이에요`)));
-document.querySelectorAll('.report-month').forEach(button => button.addEventListener('click', () => showToast(`${button.textContent.trim()} 리포트 상세는 준비 중이에요`)));
+document.querySelectorAll('.report-month').forEach(button => button.addEventListener('click', () => {
+  const month = button.querySelector('span')?.textContent?.trim() || button.textContent.trim();
+  showToast(`${month} 리포트 상세는 준비 중이에요`);
+}));
 document.addEventListener('keydown', event => {
   if (event.key !== 'Escape') return;
   if (ticketWebview?.classList.contains('is-open')) closeTicketWebview();
