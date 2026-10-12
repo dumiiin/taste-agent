@@ -2,6 +2,7 @@ const views = [...document.querySelectorAll('[data-view]')];
 const navButtons = [...document.querySelectorAll('.nav-button')];
 const tabTriggers = [...document.querySelectorAll('[data-target]')];
 const gnb = document.querySelector('.gnb');
+const gnbMain = document.querySelector('.gnb-main');
 const messageInput = document.querySelector('#message');
 const chatView = document.querySelector('.chat-view');
 const chatConversation = document.querySelector('.chat-conversation');
@@ -69,6 +70,10 @@ function openView(target, { updateHash = true } = {}) {
     button.classList.toggle('is-active', active);
     if (active) button.setAttribute('aria-current', 'page'); else button.removeAttribute('aria-current');
   });
+  if (target !== 'chat' && gnbMain) {
+    const activeIndex = Math.max(0, navButtons.findIndex(button => button.dataset.target === target));
+    gnbMain.style.setProperty('--gnb-index', activeIndex);
+  }
   gnb.classList.toggle('is-hidden', target === 'chat' || onboardingActive);
   if (!onboardingActive && statusTime) statusTime.textContent = target === 'chat' ? '9:41' : '10:20';
   document.title = `${target[0].toUpperCase()}${target.slice(1)} — Taste Agent`;
@@ -81,7 +86,7 @@ document.querySelector('.close-chat').addEventListener('click', () => openView(p
 function activateChatConversation() {
   if (!chatView || chatView.classList.contains('is-searching')) return;
   chatView.classList.add('is-conversation');
-  messageInput.placeholder = '메시지를 입력하세요';
+  messageInput.placeholder = 'メッセージを入力してください';
   requestAnimationFrame(() => { if (chatConversation) chatConversation.scrollTop = 0; });
 }
 messageInput?.addEventListener('focus', activateChatConversation);
@@ -91,9 +96,9 @@ document.querySelector('#chatForm').addEventListener('submit', event => {
   if (!chatView.classList.contains('is-conversation')) activateChatConversation();
   if (message) {
     messageInput.value = '';
-    showToast('메시지를 보냈어요');
+    showToast('メッセージを送信しました');
   } else {
-    showToast('메시지를 입력해 주세요');
+    showToast('メッセージを入力してください');
   }
 });
 document.querySelectorAll('.chat-welcome button').forEach(button => button.addEventListener('click', () => {
@@ -108,8 +113,10 @@ document.querySelectorAll('.filters button:not(.filter-settings)').forEach(butto
 const archiveTabs = [...document.querySelectorAll('[data-archive-tab]')];
 const archivePanels = [...document.querySelectorAll('[data-archive-panel]')];
 const archiveContent = document.querySelector('.archive-v2-content');
+const archiveTabList = document.querySelector('.archive-tabs');
 archiveTabs.forEach(button => button.addEventListener('click', () => {
   const target = button.dataset.archiveTab;
+  archiveTabList?.style.setProperty('--archive-tab-index', target === 'collection' ? 1 : 0);
   archiveTabs.forEach(item => {
     const active = item === button;
     item.classList.toggle('is-active', active);
@@ -132,19 +139,40 @@ collectionViewToggle?.addEventListener('click', () => {
   collectionGridView.hidden = !showGrid;
   collectionListView.hidden = showGrid;
   collectionViewToggle.classList.toggle('is-grid', showGrid);
-  collectionViewToggle.setAttribute('aria-label', showGrid ? '리스트 보기로 전환' : '카드 보기로 전환');
+  collectionViewToggle.setAttribute('aria-label', showGrid ? 'リスト表示に切り替える' : 'カード表示に切り替える');
   if (collectionViewIcon) collectionViewIcon.src = showGrid ? 'assets/figma/archive-view-list.svg' : 'assets/figma/archive-view-grid.svg';
 });
 
-document.querySelectorAll('.board-filters>div button').forEach(button => button.addEventListener('click', () => {
-  document.querySelectorAll('.board-filters>div button').forEach(item => item.classList.remove('is-selected'));
-  button.classList.add('is-selected');
+const boardFilterButtons = [...document.querySelectorAll('[data-board-filter]')];
+const boardFigures = [...document.querySelectorAll('.board-grid figure[data-category]')];
+const renderBoardFilters = () => {
+  const selected = new Set(boardFilterButtons
+    .filter(button => button.classList.contains('is-selected') && button.dataset.boardFilter !== 'all')
+    .map(button => button.dataset.boardFilter));
+  boardFigures.forEach(figure => {
+    const categories = new Set((figure.dataset.category || '').split(/\s+/));
+    const visible = selected.size === 0 || [...selected].some(category => categories.has(category));
+    figure.classList.toggle('is-filtered-out', !visible);
+  });
+};
+boardFilterButtons.forEach(button => button.addEventListener('click', () => {
+  const allButton = boardFilterButtons.find(item => item.dataset.boardFilter === 'all');
+  if (button.dataset.boardFilter === 'all') {
+    boardFilterButtons.forEach(item => item.classList.toggle('is-selected', item === button));
+  } else {
+    button.classList.toggle('is-selected');
+    allButton?.classList.remove('is-selected');
+    const hasCategory = boardFilterButtons.some(item => item.dataset.boardFilter !== 'all' && item.classList.contains('is-selected'));
+    if (!hasCategory) allButton?.classList.add('is-selected');
+  }
+  renderBoardFilters();
 }));
 
 const saveButtons = [...document.querySelectorAll('.feature-bookmark,.detail-save,.article-save')];
 const savedItems = new Set(restoredState.savedItems || []);
 saveButtons.forEach((button, index) => {
-  const id = `${button.getAttribute('aria-label') || 'saved'}-${index}`;
+  const id = button.dataset.saveId || `${button.getAttribute('aria-label') || 'saved'}-${index}`;
+  if (button.hasAttribute('data-default-unsaved')) savedItems.delete(id);
   const render = () => {
     const saved = savedItems.has(id);
     button.classList.toggle('is-saved', saved);
@@ -156,7 +184,7 @@ saveButtons.forEach((button, index) => {
     if (savedItems.has(id)) savedItems.delete(id); else savedItems.add(id);
     render();
     writeState({ savedItems: [...savedItems] });
-    showToast(savedItems.has(id) ? '아카이브에 저장했어요' : '저장을 취소했어요');
+    showToast(savedItems.has(id) ? 'アーカイブに保存しました' : '保存を取り消しました');
   });
 });
 
@@ -166,7 +194,7 @@ document.querySelectorAll('.archive-v2-info>button:not(.collection-view-toggle),
     const next = (sortLabels.indexOf(button.textContent.trim()) + 1) % sortLabels.length;
     button.textContent = sortLabels[next];
     button.classList.add('sort-active');
-    showToast(`${sortLabels[next]} 순으로 정렬했어요`);
+    showToast(`${sortLabels[next]}順に並べ替えました`);
   });
 });
 
@@ -191,20 +219,20 @@ document.querySelector('#applyFilters')?.addEventListener('click', () => {
     const source = figure.querySelector('.source-badge')?.alt;
     figure.classList.toggle('is-filtered-out', Boolean(source) && !allowed.has(source));
   });
-  showToast(`${allowed.size}개 출처를 적용했어요`);
+  showToast(`${allowed.size}件のソースを適用しました`);
 });
 
-document.querySelector('.chat-input .attach')?.addEventListener('click', () => showToast('이미지나 링크를 추가할 수 있어요'));
+document.querySelector('.chat-input .attach')?.addEventListener('click', () => showToast('画像やリンクを追加できます'));
 document.querySelector('.chat-header .new-chat')?.addEventListener('click', () => {
   chatView?.classList.remove('is-conversation', 'is-searching');
   if (messageInput) {
     messageInput.value = '';
-    messageInput.placeholder = 'Taste Agent와 대화를 시작하세요';
+    messageInput.placeholder = 'Taste Agentとの会話を始めましょう';
     messageInput.blur();
   }
   if (chatConversation) chatConversation.scrollTop = 0;
 });
-document.querySelector('.chat-header button[aria-label="검색"]')?.addEventListener('click', () => {
+document.querySelector('.chat-header button[aria-label="検索"]')?.addEventListener('click', () => {
   chatView?.classList.add('is-searching');
   generalSearchScreen?.setAttribute('aria-hidden', 'false');
   if (statusTime) statusTime.textContent = '10:20';
@@ -215,7 +243,7 @@ document.querySelector('.general-search-close')?.addEventListener('click', () =>
   generalSearchScreen?.setAttribute('aria-hidden', 'true');
   if (statusTime) statusTime.textContent = '9:41';
 });
-document.querySelector('.chat-header button[aria-label="대화 목록"]')?.addEventListener('click', () => showToast('저장된 대화가 아직 없어요'));
+document.querySelector('.chat-header button[aria-label="会話一覧"]')?.addEventListener('click', () => showToast('保存された会話はまだありません'));
 function openSideMenu() {
   sideMenu?.classList.add('is-open');
   sideMenu?.setAttribute('aria-hidden', 'false');
@@ -249,7 +277,7 @@ function openTicketWebview(event) {
   ticketWebview.setAttribute('aria-hidden', 'false');
   document.body.classList.add('ticket-webview-active');
   gnb.classList.add('is-hidden');
-  document.title = '네이버 예약 — Taste Agent';
+  document.title = 'MMCA予約 — Taste Agent';
   ticketWebview.querySelector('.ticket-webview-close')?.focus({ preventScroll: true });
 }
 function closeTicketWebview() {
@@ -268,11 +296,11 @@ document.querySelector('.home-feature-menu')?.addEventListener('click', openSide
 document.querySelectorAll('.menu-close,.menu-backdrop').forEach(button => button.addEventListener('click', closeSideMenu));
 document.querySelector('[data-open-report]')?.addEventListener('click', openReport);
 document.querySelector('.report-back')?.addEventListener('click', () => closeReport());
-document.querySelector('.report-year')?.addEventListener('click', () => showToast('2025년 리포트를 보고 있어요'));
-document.querySelectorAll('[data-menu-placeholder]').forEach(button => button.addEventListener('click', () => showToast(`${button.dataset.menuPlaceholder}은 준비 중이에요`)));
+document.querySelector('.report-year')?.addEventListener('click', () => showToast('2025年のレポートを表示しています'));
+document.querySelectorAll('[data-menu-placeholder]').forEach(button => button.addEventListener('click', () => showToast(`${button.dataset.menuPlaceholder}は準備中です`)));
 document.querySelectorAll('.report-month').forEach(button => button.addEventListener('click', () => {
   const month = button.querySelector('span')?.textContent?.trim() || button.textContent.trim();
-  showToast(`${month} 리포트 상세는 준비 중이에요`);
+  showToast(`${month}のレポート詳細は準備中です`);
 }));
 document.addEventListener('keydown', event => {
   if (event.key !== 'Escape') return;
@@ -282,11 +310,11 @@ document.addEventListener('keydown', event => {
 });
 
 const homeSlides = [
-  { title: '서도호' },
+  { title: 'Suh Do ho' },
   { title: 'Fritz Hansen' },
   { title: 'Dieter Rams' }
 ];
-const homeCardStep = 286;
+const homeCardStep = 288;
 let homeSlideIndex = 0;
 let homeTrackIndex = 1;
 let homeSwipe = null;
@@ -552,7 +580,7 @@ document.querySelectorAll('.taste-card').forEach(card => card.addEventListener('
   }
   toggleTasteCard(card);
 }));
-completeTasteButton?.addEventListener('click', () => finishOnboarding('취향 설정을 완료했어요'));
+completeTasteButton?.addEventListener('click', () => finishOnboarding('好みの設定が完了しました'));
 
 const tasteTransform = { x: -405, y: -26, scale: 1 };
 const tastePointers = new Map();
